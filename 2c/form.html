@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Course Registration Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        label {
+            margin-top: 10px;
+        }
+        input, select, textarea {
+            margin-bottom: 10px;
+            padding: 8px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        input[type="submit"] {
+            cursor: pointer;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+        .error {
+            color: red;
+            font-size: 0.9em;
+            margin-top: -10px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Course Registration Form</h1>
+    <form id="registrationForm">
+        <label for="name">Student's Name:</label>
+        <input type="text" id="name" name="name" required>
+        <span class="error" id="nameError"></span>
+
+        <label for="rollNo">Roll Number:</label>
+        <input type="text" id="rollNo" name="rollNo" required pattern="\d{1,10}">
+        <span class="error" id="rollNoError"></span>
+
+        <label for="gender">Gender:</label>
+        <select id="gender" name="gender" required>
+            <option value="" disabled selected>Select Gender</option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+            <option value="other">Other</option>
+        </select>
+        <span class="error" id="genderError"></span>
+
+        <label for="year">Year:</label>
+        <input type="number" id="year" name="year" min="1" max="4" required>
+        <span class="error" id="yearError"></span>
+
+        
+
+        <label for="section">Section:</label>
+        <input type="text" id="section" name="section" required>
+        <span class="error" id="sectionError"></span>
+
+        <label for="mobile">Mobile No:</label>
+        <input type="tel" id="mobile" name="mobile" required pattern="[0-9]{10}">
+        <span class="error" id="mobileError"></span>
+
+        <label for="email">E-mail:</label>
+        <input type="email" id="email" name="email" required>
+        <span class="error" id="emailError"></span>
+        
+        <label for="department">Department:</label>
+        <input type="text" id="department" name="department" required>
+        <span class="error" id="departmentError"></span>
+
+        <label for="city">Course Title:</label>
+        <input type="text" id="city" name="city" required>
+        <span class="error" id="cityError"></span>
+
+        <label for="country">Course Id:</label>
+        <input type="text" id="country" name="country" required>
+        <span class="error" id="countryError"></span>
+
+        <label for="pincode">Course Cridit</label>
+        <input type="text" id="pincode" name="pincode" required pattern="[0-9]{6}">
+        <span class="error" id="pincodeError"></span>
+
+        <input type="submit" value="Register">
+    </form>
+</div>
+
+<script>
+   document.getElementById('registrationForm').addEventListener('submit', function(event) {
+        let isValid = true;
+        document.querySelectorAll('.error-message').forEach(e => e.textContent = '');
+        document.querySelectorAll('input, select, textarea').forEach(e => e.classList.remove('error'));
+
+        function validateField(fieldId, condition, errorMessage) {
+            const field = document.getElementById(fieldId);
+            const errorElement = document.getElementById(`${fieldId}Error`);
+            const formGroup = document.getElementById(`${fieldId}Group`);
+
+            if (!condition) {
+                errorElement.textContent = errorMessage;
+                field.classList.add('error');
+                formGroup.classList.add('error');
+                isValid = false;
+            }
+        }
+
+        validateField('name', document.getElementById('name').value.trim() !== '', 'Name is required.');
+        validateField('rollNo',test(document.getElementById('rollNo').value), 'Roll number must be a number with up to 10 digits.');
+        validateField('gender', document.getElementById('gender').value !== '', 'Gender is required.');
+        const year = document.getElementById('year').value;
+        validateField('year', year >= 1 && year <= 4, 'Year must be between 1 and 4.');
+        validateField('department', document.getElementById('department').value.trim() !== '', 'Department is required.');
+        validateField('section', document.getElementById('section').value.trim() !== '', 'Section is required.');
+        validateField('mobile', test(document.getElementById('mobile').value), 'Mobile number must be exactly 10 digits.');
+        validateField('email',test(document.getElementById('email').value), 'Please enter a valid email address.');
+        validateField('address', document.getElementById('address').value.trim() !== '', 'Address is required.');
+        validateField('city', document.getElementById('city').value.trim() !== '', 'City is required.');
+        validateField('country', document.getElementById('country').value.trim() !== '', 'Country is required.');
+        validateField('pincode',test(document.getElementById('pincode').value), 'Pincode must be exactly 6 digits.');
+
+        if (!isValid) {
+            event.preventDefault();
+        }
+    });
+</script>
+
+</body>
+</html>
