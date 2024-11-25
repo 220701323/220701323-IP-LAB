@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Load Text with XMLHttpRequest</title>
+    <script>
+        function loadXMLDoc() {
+            // Create a new XMLHttpRequest object
+            const xhttp = new XMLHttpRequest();
+            
+            // Define the behavior when the response is loaded
+            xhttp.onload = function() {
+                if (xhttp.status === 200) {
+                    // Display the responseText in the div section
+                    document.getElementById("content").innerHTML = xhttp.responseText;
+                } else {
+                    document.getElementById("content").innerHTML = "Error: Unable to load the content.";
+                }
+            };
+
+            // Error handling for request failure
+            xhttp.onerror = function() {
+                document.getElementById("content").innerHTML = "Request failed.";
+            };
+
+            // Initialize the request
+            xhttp.open("GET", "rec.txt", true);
+
+            // Send the request to the server
+            xhttp.send();
+        }
+    </script>
+</head>
+<body>
+    <div>
+        <button onclick="loadXMLDoc()">Load Content</button>
+    </div>
+    
+    <!-- Div to display the information returned from the server -->
+    <div id="content">
+        <!-- Content will be loaded here -->
+    </div>
+</body>
+</html>
