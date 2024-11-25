@@ -1,0 +1,79 @@
+*.card {
+    text-align: center;
+    background-color:#800080;
+    margin-top: 10px;
+    color: white;
+}
+
+.tab  {
+    background-color: #808080;
+    width: 200px;
+    height: 600px;
+    float:left;
+margin-top: 0px;
+margin-bottom: 20px;
+color: #800080;
+}
+.tabs{
+    background-color: white;
+    width: 400px;
+    height: 800px;
+    float:left;
+margin-top: 0px;
+margin-bottom: 0px;
+color:black;
+padding: 20px;
+}.dg-card{
+height: 400px;
+width:400px;
+}
+
+.heading1 {
+margin-top: 20px;
+margin-bottom: 20px;
+text-align: right;
+color: blue;
+font-size: 20px;
+}
+
+.welcome {
+text-align: right;
+margin-bottom: 50px;
+}.grid{
+    display: grid;
+    grid-template-columns: 100%;
+}
+.page-main-content-container {
+padding: 10px;
+}
+
+.side-bar-link.active {
+background-color: #fff;
+}
+
+table {
+border-collapse: collapse;
+background-color: #b0b0b0;
+}
+
+td {
+border: 1px solid #000;
+padding: 5px;
+}
+
+th {
+border: 1px solid #000;
+}.page-main-content-container {
+padding: 10px;
+}
+
+.side-bar-link.active {
+background-color: #fff;
+}
+.view{
+    font-weight: bold;
+    margin: 10px;
+}
+.view h1,h2,p{
+   padding-bottom: 10px;
+}
